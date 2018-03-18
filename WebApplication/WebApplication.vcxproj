@@ -20,13 +20,13 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{24A71416-8F27-4D25-8222-C9C228202EFB}</ProjectGuid>
-    <RootNamespace>HttpServer</RootNamespace>
+    <ProjectGuid>{14F798C6-D93D-411C-BB4D-5B9652612409}</ProjectGuid>
+    <RootNamespace>WebApplication</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -115,19 +115,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Configuration.cpp" />
-    <ClCompile Include="Exception.cpp" />
-    <ClCompile Include="Server.cpp" />
-    <ClCompile Include="Socket.cpp" />
-    <ClCompile Include="Socket.h" />
-    <ClCompile Include="SocketsFactory.cpp" />
+    <ClCompile Include="Startup.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Configuration.h" />
-    <ClInclude Include="Exception.h" />
-    <ClInclude Include="resource.h" />
-    <ClInclude Include="Server.h" />
-    <ClInclude Include="SocketsFactory.h" />
+    <ProjectReference Include="..\HttpServer\HttpServer.vcxproj">
+      <Project>{24a71416-8f27-4d25-8222-c9c228202efb}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
