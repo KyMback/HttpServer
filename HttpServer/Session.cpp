@@ -2,80 +2,46 @@
 #include <iostream>
 #include <sstream>
 #include <string>
-#include <WinSock2.h>
-#include <WS2tcpip.h>
 #include "Exception.h"
 
 using namespace HttpServer::Infrustructure;
+using namespace Http;
+using namespace Exceptions;
 using namespace std;
 
-Session::Session(int socketDescriptor)
+Session::Session(Connection* connection)
 {
-	SocketDescriptor = socketDescriptor;
-	InitializeConfigures();
-}
-
-void Session::InitializeConfigures()
-{
-	Timeout.tv_sec = _defaultSessionTimeout;
-	Timeout.tv_usec = NULL;
-	FD_ZERO(&SetForWaiting);
-	FD_SET(SocketDescriptor, &SetForWaiting);
+	this->_connection = connection;
 }
 
 int Session::StartSession()
 {
-	while (true) {
-		switch (select(NULL, &SetForWaiting, NULL, NULL, &Timeout))
+	while(true)
+	{
+		ConnectionInfo information = _connection->GetData();
+		if(information.Status != ConnectionStatus::Alive)
 		{
-		case SOCKET_ERROR: printf("error in select\n"); return 1;
-		case 0: printf("TimeOut\n"); return 0;
-		default: break;
-		}
-		char buf[1024];
-
-		int result = recv(SocketDescriptor, buf, _maxClientBufferSize, 0); // Считывает данные из сокета
-
-		switch (result)
-		{
-		case SOCKET_ERROR:				// ошибка получения данных
-			//cerr << "recv failed: " << result << "\n";
-			return 1;
-			//closesocket(_socketDescriptor);
-			//break;
-		case 0: 						// соединение закрыто клиентом
-			/*cerr << "connection closed...\n";
-			closesocket(_socketDescriptor);
-			break;*/
-			return 1;
-		default:
-			std::stringstream response; // сюда будет записываться ответ клиенту
-										// Мы знаем фактический размер полученных данных, поэтому ставим метку конца строки в буфере запроса
-			buf[result] = '\0';
-			GetResponse(response, buf);
-
-			// Отправляем ответ клиенту с помощью функции send
-			if (send(SocketDescriptor, response.str().c_str(),
-				response.str().length(), 0) == SOCKET_ERROR) {
-				return 1;
-				// произошла ошибка при отправле данных
-				//cerr << "send failed: " << WSAGetLastError() << "\n";
+			if(information.Status == ConnectionStatus::Timeout)
+			{
+				printf("Timeout\n");
 			}
-			break;
+			return 0;			
 		}
+		//TODO: Execute
+		//_connection->SetData(GetResponse(nullptr)->GetStringStream().str());
+		_connection->SetData(GetCustomData(information.Data));
 	}
 }
 
-void Session::GetResponse(stringstream& stream, char* buffer)
+string Session::GetCustomData(string body)
 {
-	stringstream response_body; // тело ответа
-								// Данные успешно получены
-								// формируем тело ответа (HTML)
+	stringstream stream;
+	stringstream response_body;
 	response_body << "<title>Test C++ HTTP Server</title>\n"
 		<< "<h1>Test page</h1>\n"
 		<< "<p>This is body of the test page...</p>\n"
 		<< "<h2>Request headers</h2>\n"
-		<< "<pre>" << buffer << "</pre>\n"
+		<< "<pre>" << body << "</pre>\n"
 		<< "<em><small>Test C++ Http Server</small></em>\n";
 
 	// Формируем весь ответ вместе с заголовками
@@ -85,10 +51,38 @@ void Session::GetResponse(stringstream& stream, char* buffer)
 		<< "Content-Length: " << response_body.str().length()
 		<< "\r\n\r\n"
 		<< response_body.str();
+	return stream.str();
+}
+
+HttpResponse* Session::GetResponse(string body)
+{
+	HttpResponse* response = new HttpResponse();
+	response->SetBody(body);
+	//stringstream stream;
+	//stringstream response_body;
+	//response_body << "<title>Test C++ HTTP Server</title>\n"
+	//	<< "<h1>Test page</h1>\n"
+	//	<< "<p>This is body of the test page...</p>\n"
+	//	<< "<h2>Request headers</h2>\n"
+	//	<< "<pre>" << buffer << "</pre>\n"
+	//	<< "<em><small>Test C++ Http Server</small></em>\n";
+
+	//// Формируем весь ответ вместе с заголовками
+	//stream << "HTTP/1.1 200 OK\r\n"
+	//	<< "Version: HTTP/1.1\r\n"
+	//	<< "Content-Type: text/html; charset=utf-8\r\n"
+	//	<< "Content-Length: " << response_body.str().length()
+	//	<< "\r\n\r\n"
+	//	<< response_body.str();
+	return response;
+}
+
+HttpRequest* Session::GetRequest(stringstream& stream)
+{
+	return new HttpRequest();
 }
 
 Session::~Session()
 {
-	// Закрываем соединение к клиентом
-	closesocket(SocketDescriptor);
+	delete _connection;
 }

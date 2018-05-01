@@ -15,6 +15,7 @@ namespace HttpServer
 			{
 			public:
 				Exception(const char* message);
+				const char* GetEceptionMessage() const;
 				Exception();
 			};
 		}

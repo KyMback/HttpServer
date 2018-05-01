@@ -1,6 +1,10 @@
 #pragma once
-#include <iosfwd>
-#include <WinSock2.h>
+#include "HttpContext.h"
+#include "HttpResponse.h"
+#include "Connection.h"
+
+using namespace  HttpServer::Infrustructure::Http;
+using std::stringstream;
 
 namespace HttpServer
 {
@@ -9,19 +13,15 @@ namespace HttpServer
 		class Session
 		{
 		private:
-			const int _defaultSessionTimeout = 60;
-			const int _maxClientBufferSize = 1024;
+			Connection* _connection = nullptr;
 
-			int SocketDescriptor = 0;
+			HttpResponse* GetResponse(string body);
+			HttpRequest* GetRequest(stringstream& stream);
 
-			fd_set SetForWaiting;
-			timeval Timeout;
-			int SessionTimeout = _defaultSessionTimeout;
-
-			void InitializeConfigures();
-			void GetResponse(std::stringstream& stream, char* buffer);			
+			string GetCustomData(string body);
 		public:
-			Session(int socketDescriptor);
+			HttpContext* UserContext = nullptr;
+			Session(Connection* connection);
 			int StartSession();
 			~Session();
 		};

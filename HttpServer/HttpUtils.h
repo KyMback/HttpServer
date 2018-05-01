@@ -15,6 +15,7 @@ namespace HttpServer
 			class HttpUtils
 			{
 			public:
+				static const char* defaultLineSeparatedString;
 				static string GetNewLineSeparatedHeaders(vector<string>& headers);
 				static string GetResponseTitle(HttpResponse& response);
 			};

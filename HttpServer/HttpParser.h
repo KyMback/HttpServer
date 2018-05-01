@@ -9,9 +9,7 @@ namespace HttpServer
 	{
 		class HttpParser
 		{
-		public:
 
-			
 		};
 	}
 }

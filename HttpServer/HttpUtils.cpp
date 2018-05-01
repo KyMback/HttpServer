@@ -4,6 +4,8 @@
 using namespace HttpServer::Infrustructure::Http;
 using namespace HttpServer::Infrustructure::Utils;
 
+const char* HttpUtils::defaultLineSeparatedString = "\r\n";
+
 string HttpUtils::GetNewLineSeparatedHeaders(vector<string>& headers)
 {
 	return StringUtils::GetSeparatedString(headers, "\r\n");

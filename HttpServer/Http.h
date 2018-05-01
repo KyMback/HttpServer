@@ -1,9 +1,11 @@
 #pragma once
 #include <string>
 #include <vector>
+#include <sstream> 
 
 using std::string;
 using std::vector;
+using std::stringstream;
 
 namespace HttpServer
 {
@@ -26,6 +28,8 @@ namespace HttpServer
 
 				void virtual SetBody(string rowTitle) = 0;
 				string virtual GetBody() = 0;
+
+				stringstream GetStringStream();
 			};
 		}
 	}

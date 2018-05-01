@@ -87,6 +87,18 @@
     <ClInclude Include="Session.h">
       <Filter>Header Files\Infrustructure</Filter>
     </ClInclude>
+    <ClInclude Include="HttpContext.h">
+      <Filter>Header Files\Infrustructure\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="Connection.h">
+      <Filter>Header Files\Infrustructure</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionStatus.h">
+      <Filter>Header Files\Infrustructure\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="ConnectionInfo.h">
+      <Filter>Header Files\Infrustructure</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">
@@ -120,6 +132,18 @@
       <Filter>Source Files\Infrustructure\Utils</Filter>
     </ClCompile>
     <ClCompile Include="Session.cpp">
+      <Filter>Source Files\Infrustructure</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpContext.cpp">
+      <Filter>Source Files\Infrustructure\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="Http.cpp">
+      <Filter>Source Files\Infrustructure\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="Connection.cpp">
+      <Filter>Source Files\Infrustructure</Filter>
+    </ClCompile>
+    <ClCompile Include="ConnectionInfo.cpp">
       <Filter>Source Files\Infrustructure</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,6 +10,7 @@
 using namespace HttpServer;
 using namespace Infrustructure::Exceptions;
 using Infrustructure::Session;
+using Infrustructure::Connection;
 using namespace std;
 
 int Server::Start()
@@ -18,12 +19,12 @@ int Server::Start()
 	this->ServerConfigurations = new Configuration();	
 	this->ServerConfigurations->OpenNewSocket();
 	cout << "Socket successfully created..." << endl;
-	int lestenSocket = ServerConfigurations->GetSocketFileDescriptor();	
+	int listenSocket = ServerConfigurations->GetSocketFileDescriptor();	
 	cout << "Start listening in 127.0.0.1:8000..." << endl;
 
 	while(true) {
 		int clientSocket = INVALID_SOCKET;
-		clientSocket = accept(lestenSocket, nullptr, nullptr);		// Принимаем входящие соединения
+		clientSocket = accept(listenSocket, nullptr, nullptr);		// Принимаем входящие соединения
 		cout << "Client socket descriptor: " << clientSocket << endl;
 		if (clientSocket == INVALID_SOCKET) {
 			printf("accept failed");
@@ -34,8 +35,17 @@ int Server::Start()
 
 DWORD WINAPI Server::StartNewSession(LPVOID param)
 {
-	Session* session = new Session(reinterpret_cast<int>(param));
-	int result = session->StartSession();
+	Session* session = new Session(new Connection(reinterpret_cast<int>(param)));
+	int result = 0;
+	try
+	{
+		result = session->StartSession();
+	}
+	catch (Exception ex)
+	{
+		printf("%s", ex.GetEceptionMessage());
+		result = -1;
+	}	
 	delete session;
 	return result;
 }

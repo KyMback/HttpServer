@@ -10,7 +10,7 @@ namespace HttpServer
 	{
 		namespace Http
 		{
-			class HttpResponse final : protected Http
+			class HttpResponse final : public Http
 			{
 				HttpStatusCode StatusCode = HttpStatusCode::OK;
 			public:
