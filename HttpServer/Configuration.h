@@ -6,6 +6,7 @@
 #include "Socket.h"
 
 using std::string;
+using namespace HttpServer::Infrustructure::Sockets;
 
 namespace HttpServer 
 {

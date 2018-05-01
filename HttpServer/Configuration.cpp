@@ -1,17 +1,15 @@
 ﻿#include "Configuration.h"
-
 #include <WS2tcpip.h>
 #include "Exception.h"
 #include "SocketsFactory.h"
 
 using HttpServer::Configuration;
-using HttpServer::SocketsFactory;
-using HttpServer::Exception;
+using HttpServer::Infrustructure::Exceptions::Exception;
 
 void Configuration::OpenNewSocket()
 {
 	delete this->Socket;
-	this->Socket = SocketsFactory::GetInstance().BuildSocket(this->IpAddress, this->PortAdress);
+	this->Socket = Infrustructure::Sockets::SocketsFactory::GetInstance().BuildSocket(this->IpAddress, this->PortAdress);
 }
 
 SOCKET Configuration::GetSocketFileDescriptor()

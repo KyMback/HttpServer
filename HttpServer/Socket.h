@@ -3,14 +3,20 @@
 
 namespace HttpServer
 {
-	class Socket
+	namespace Infrustructure
 	{
-		SOCKET SocketFileDescriptor = NULL;
-		addrinfo* SocketAddressInformation = nullptr;
-	public:
-		Socket(SOCKET socketFileDescriptor, addrinfo* socketAddressInformation);
-		SOCKET GetSocketFileDescriptor() const;
-		addrinfo GetSocketAddressInformation() const;
-		~Socket();
-	};
+		namespace Sockets
+		{
+			class Socket
+			{
+				SOCKET SocketFileDescriptor = NULL;
+				addrinfo* SocketAddressInformation = nullptr;
+			public:
+				Socket(SOCKET socketFileDescriptor, addrinfo* socketAddressInformation);
+				SOCKET GetSocketFileDescriptor() const;
+				addrinfo GetSocketAddressInformation() const;
+				~Socket();
+			};
+		}
+	}
 }

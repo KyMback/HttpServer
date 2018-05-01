@@ -117,17 +117,29 @@
   <ItemGroup>
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="HttpRequest.cpp" />
+    <ClCompile Include="HttpResponse.cpp" />
+    <ClCompile Include="HttpUtils.cpp" />
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="Session.cpp" />
     <ClCompile Include="Socket.cpp" />
     <ClCompile Include="Socket.h" />
     <ClCompile Include="SocketsFactory.cpp" />
+    <ClCompile Include="StringUtils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Exception.h" />
-    <ClInclude Include="resource.h" />
+    <ClInclude Include="Http.h" />
+    <ClInclude Include="HttpParser.h" />
+    <ClInclude Include="HttpRequest.h" />
+    <ClInclude Include="HttpResponse.h" />
+    <ClInclude Include="HttpStatusCode.h" />
+    <ClInclude Include="HttpUtils.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="Session.h" />
     <ClInclude Include="SocketsFactory.h" />
+    <ClInclude Include="StringUtils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

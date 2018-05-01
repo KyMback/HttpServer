@@ -1,7 +1,7 @@
 #include "Socket.h"
-
 #include <WS2tcpip.h>
-using HttpServer::Socket;
+
+using namespace HttpServer::Infrustructure::Sockets;
 
 Socket::Socket(SOCKET socketFileDescriptor, addrinfo* socketAddressInformation)
 {

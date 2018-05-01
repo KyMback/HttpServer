@@ -12,6 +12,8 @@ namespace HttpServer
 	public:
 		static Server& GetInstance();
 		int Start();
+		static DWORD WINAPI StartNewSession(LPVOID lpParam);
+		HANDLE CreateNewSession(int socketDescriptor);
 
 		Server(Server const&) = delete;
 		Server& operator= (Server const&) = delete;

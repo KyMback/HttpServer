@@ -7,10 +7,16 @@ using std::cerr;
 
 namespace HttpServer
 {
-	class Exception : exception
+	namespace Infrustructure
 	{
-	public:
-		Exception(const char* message);
-		Exception();
-	};
+		namespace Exceptions
+		{
+			class Exception : exception
+			{
+			public:
+				Exception(const char* message);
+				Exception();
+			};
+		}
+	}
 }

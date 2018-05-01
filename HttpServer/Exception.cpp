@@ -1,7 +1,5 @@
-#pragma once
-
 #include "Exception.h"
-using HttpServer::Exception;
+using namespace HttpServer::Infrustructure::Exceptions;
 
 Exception::Exception(const char* message) : exception(message)
 {

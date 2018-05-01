@@ -4,10 +4,9 @@
 #include <string>
 #include <WS2tcpip.h>
 
-using HttpServer::SocketsFactory;
-using HttpServer::Exception;
+using namespace HttpServer::Infrustructure::Sockets;
+using namespace HttpServer::Infrustructure::Exceptions;
 using std::string;
-using HttpServer::Socket;
 
 SocketsFactory::SocketsFactory() { }
 

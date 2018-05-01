@@ -13,17 +13,41 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Exceptions">
-      <UniqueIdentifier>{e99f9a9a-c8bc-4827-a29c-3b84cb334087}</UniqueIdentifier>
+    <Filter Include="Header Files\Infrustructure">
+      <UniqueIdentifier>{410fb5d9-3c27-4097-b4bf-7f79bd06ffcc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Exceptions">
-      <UniqueIdentifier>{e074a880-8c49-4740-9ac1-3bbf170e5055}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Sockets">
+    <Filter Include="Header Files\Infrustructure\Sockets">
       <UniqueIdentifier>{ff781b99-2098-4752-86b6-2e8f943d24a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Sockets">
+    <Filter Include="Header Files\Infrustructure\Exceptions">
+      <UniqueIdentifier>{e99f9a9a-c8bc-4827-a29c-3b84cb334087}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrustructure">
+      <UniqueIdentifier>{7da2ee76-88f6-4dbc-af7c-5ce547ae9b28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrustructure\Exceptions">
+      <UniqueIdentifier>{e074a880-8c49-4740-9ac1-3bbf170e5055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrustructure\Sockets">
       <UniqueIdentifier>{79639513-1042-4374-bc09-55130ef6a06f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infrustructure\Http">
+      <UniqueIdentifier>{abe57bc7-89c0-4144-8a60-49cad03c7c59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrustructure\Http">
+      <UniqueIdentifier>{b98b0ece-67bb-43bc-aa74-0c0177e60313}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infrustructure\Enums">
+      <UniqueIdentifier>{cb9d1f83-7934-4116-b6ae-dd1268ab74ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infrustructure\Http\HttpParser">
+      <UniqueIdentifier>{0098716a-5255-4cf6-a8f5-22ae46208a35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infrustructure\Utils">
+      <UniqueIdentifier>{1a6ed578-7e1e-4144-bcb3-7080e4eedaa5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrustructure\Utils">
+      <UniqueIdentifier>{4126e776-d124-4cf1-b90b-6aa3fa01c172}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -34,13 +58,34 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Exception.h">
-      <Filter>Header Files\Exceptions</Filter>
+      <Filter>Header Files\Infrustructure\Exceptions</Filter>
     </ClInclude>
     <ClInclude Include="SocketsFactory.h">
-      <Filter>Header Files\Sockets</Filter>
+      <Filter>Header Files\Infrustructure\Sockets</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Http.h">
+      <Filter>Header Files\Infrustructure\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpRequest.h">
+      <Filter>Header Files\Infrustructure\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpResponse.h">
+      <Filter>Header Files\Infrustructure\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpStatusCode.h">
+      <Filter>Header Files\Infrustructure\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpParser.h">
+      <Filter>Header Files\Infrustructure\Http\HttpParser</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpUtils.h">
+      <Filter>Header Files\Infrustructure\Http</Filter>
+    </ClInclude>
+    <ClInclude Include="StringUtils.h">
+      <Filter>Header Files\Infrustructure\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Session.h">
+      <Filter>Header Files\Infrustructure</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,16 +96,31 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Exception.cpp">
-      <Filter>Source Files\Exceptions</Filter>
+      <Filter>Source Files\Infrustructure\Exceptions</Filter>
     </ClCompile>
     <ClCompile Include="SocketsFactory.cpp">
-      <Filter>Source Files\Sockets</Filter>
+      <Filter>Source Files\Infrustructure\Sockets</Filter>
     </ClCompile>
     <ClCompile Include="Socket.h">
-      <Filter>Header Files\Sockets</Filter>
+      <Filter>Header Files\Infrustructure\Sockets</Filter>
     </ClCompile>
     <ClCompile Include="Socket.cpp">
-      <Filter>Source Files\Sockets</Filter>
+      <Filter>Source Files\Infrustructure\Sockets</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpResponse.cpp">
+      <Filter>Source Files\Infrustructure\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpRequest.cpp">
+      <Filter>Source Files\Infrustructure\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpUtils.cpp">
+      <Filter>Source Files\Infrustructure\Http</Filter>
+    </ClCompile>
+    <ClCompile Include="StringUtils.cpp">
+      <Filter>Source Files\Infrustructure\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Session.cpp">
+      <Filter>Source Files\Infrustructure</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
