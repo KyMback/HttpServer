@@ -1,6 +1,8 @@
 #pragma once
 #include "Http.h"
+#include "HttpRequestType.h"
 
+using HttpServer::Infrustructure::Enums::HttpRequestType;
 
 namespace HttpServer
 {
@@ -11,6 +13,9 @@ namespace HttpServer
 			class HttpRequest final : protected Http
 			{
 			public:
+				string Uri = string();
+				HttpRequestType RequestType = HttpRequestType::Get;
+
 				void SetTitle(string rowTitle) override;
 				string GetTitle() override;
 

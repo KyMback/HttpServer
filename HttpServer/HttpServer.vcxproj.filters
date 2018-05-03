@@ -40,14 +40,17 @@
     <Filter Include="Header Files\Infrustructure\Enums">
       <UniqueIdentifier>{cb9d1f83-7934-4116-b6ae-dd1268ab74ae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Infrustructure\Http\HttpParser">
-      <UniqueIdentifier>{0098716a-5255-4cf6-a8f5-22ae46208a35}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Infrustructure\Utils">
       <UniqueIdentifier>{1a6ed578-7e1e-4144-bcb3-7080e4eedaa5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Infrustructure\Utils">
       <UniqueIdentifier>{4126e776-d124-4cf1-b90b-6aa3fa01c172}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Infrustructure\Http\HttpServices">
+      <UniqueIdentifier>{0098716a-5255-4cf6-a8f5-22ae46208a35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Infrustructure\Http\HttpServices">
+      <UniqueIdentifier>{06da6040-362a-4b04-bbf2-1d1fe0447acb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +78,6 @@
     <ClInclude Include="HttpStatusCode.h">
       <Filter>Header Files\Infrustructure\Enums</Filter>
     </ClInclude>
-    <ClInclude Include="HttpParser.h">
-      <Filter>Header Files\Infrustructure\Http\HttpParser</Filter>
-    </ClInclude>
     <ClInclude Include="HttpUtils.h">
       <Filter>Header Files\Infrustructure\Http</Filter>
     </ClInclude>
@@ -98,6 +98,12 @@
     </ClInclude>
     <ClInclude Include="ConnectionInfo.h">
       <Filter>Header Files\Infrustructure</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpRequestType.h">
+      <Filter>Header Files\Infrustructure\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpParserService.h">
+      <Filter>Header Files\Infrustructure\Http\HttpServices</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="ConnectionInfo.cpp">
       <Filter>Source Files\Infrustructure</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpParserService.cpp">
+      <Filter>Source Files\Infrustructure\Http\HttpServices</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

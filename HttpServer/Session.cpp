@@ -44,7 +44,6 @@ string Session::GetCustomData(string body)
 		<< "<pre>" << body << "</pre>\n"
 		<< "<em><small>Test C++ Http Server</small></em>\n";
 
-	// Формируем весь ответ вместе с заголовками
 	stream << "HTTP/1.1 200 OK\r\n"
 		<< "Version: HTTP/1.1\r\n"
 		<< "Content-Type: text/html; charset=utf-8\r\n"

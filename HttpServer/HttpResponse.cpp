@@ -28,13 +28,3 @@ string HttpResponse::GetBody()
 {
 	return this->Body;
 }
-
-void HttpResponse::SetStatusCode(HttpStatusCode statusCode)
-{
-	this->StatusCode = statusCode;
-}
-
-HttpStatusCode HttpResponse::GetStatusCode()
-{
-	return this->StatusCode;
-}

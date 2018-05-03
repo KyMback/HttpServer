@@ -20,6 +20,12 @@ namespace HttpServer
 				vector<string> Headers;
 				string Body;
 			public:
+				bool IsKeepAliveConnection = false;
+				int ContentLength = 0;
+				string ContentType = string();
+				double HttpVersion = 1.1;
+
+
 				void virtual SetTitle(string rowTitle) = 0;
 				string virtual GetTitle() = 0;
 

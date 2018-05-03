@@ -12,8 +12,10 @@ namespace HttpServer
 		{
 			class HttpResponse final : public Http
 			{
-				HttpStatusCode StatusCode = HttpStatusCode::OK;
+				
 			public:
+				HttpStatusCode StatusCode = HttpStatusCode::OK;
+
 				void SetTitle(string rowTitle) override;
 				string GetTitle() override;
 
@@ -22,9 +24,6 @@ namespace HttpServer
 
 				void SetBody(string rowTitle) override;
 				string GetBody() override;
-
-				void SetStatusCode(HttpStatusCode statusCode);
-				HttpStatusCode GetStatusCode();
 			};
 		}
 	}

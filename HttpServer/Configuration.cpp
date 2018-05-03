@@ -23,10 +23,7 @@ SOCKET Configuration::GetSocketFileDescriptor()
 
 Configuration::Configuration()
 {
-	WSADATA wsaData; // служебная структура для хранение информации
-					 // о реализации Windows Sockets
-					 // старт использования библиотеки сокетов процессом
-					 // (подгружается Ws2_32.dll)
+	WSADATA wsaData;
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
 		throw Exception("WSAStartup failed");
 	}

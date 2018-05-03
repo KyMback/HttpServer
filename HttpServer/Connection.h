@@ -17,9 +17,12 @@ namespace HttpServer
 			int SocketDescriptor = 0;
 			fd_set SetForWaiting;
 			timeval Timeout;
+			timeval TimeoutForDataExistence;
 
 			void InitializeConnectionConfigures();
 			int KeepAliveConnection();
+			ConnectionInfo GetFullData();
+			bool IsDataExist();
 		public:
 			explicit Connection(int socketDescriptor);
 			ConnectionInfo GetData();

@@ -1,6 +1,5 @@
 ﻿#include "Server.h"
 #include <iostream>
-#include <sstream>
 #include <string>
 #include <WinSock2.h>
 #include <WS2tcpip.h>
@@ -24,7 +23,10 @@ int Server::Start()
 
 	while(true) {
 		int clientSocket = INVALID_SOCKET;
-		clientSocket = accept(listenSocket, nullptr, nullptr);		// Принимаем входящие соединения
+		sockaddr clientAddress;
+		int address_len = sizeof(clientAddress);
+		clientSocket = accept(listenSocket, &clientAddress, &address_len);
+		//cout << "Client socket descriptor: " << clientSocket << " " << clientAddress.sa_family << " " << address_len <<  endl;
 		cout << "Client socket descriptor: " << clientSocket << endl;
 		if (clientSocket == INVALID_SOCKET) {
 			printf("accept failed");
@@ -43,7 +45,7 @@ DWORD WINAPI Server::StartNewSession(LPVOID param)
 	}
 	catch (Exception ex)
 	{
-		printf("%s", ex.GetEceptionMessage());
+		printf("%s\n", ex.GetEceptionMessage());
 		result = -1;
 	}	
 	delete session;
@@ -67,4 +69,3 @@ Server& Server::GetInstance()
 	static Server server;
 	return server;
 }
-

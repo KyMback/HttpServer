@@ -14,8 +14,8 @@ namespace HttpServer
 		public:
 			ConnectionStatus Status = ConnectionStatus::Closed;
 			string Data;
-			ConnectionInfo(ConnectionStatus connectionStatus, string data);
-			ConnectionInfo();
+			explicit ConnectionInfo(ConnectionStatus connectionStatus, string data);
+			explicit ConnectionInfo();
 		};
 	}
 }
