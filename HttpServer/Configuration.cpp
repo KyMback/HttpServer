@@ -9,7 +9,7 @@ using HttpServer::Infrustructure::Exceptions::Exception;
 void Configuration::OpenNewSocket()
 {
 	delete this->Socket;
-	this->Socket = Infrustructure::Sockets::SocketsFactory::GetInstance().BuildSocket(this->IpAddress, this->PortAdress);
+	this->Socket = SocketsFactory::GetInstance().BuildSocket(this->IpAddress, this->PortAdress);
 }
 
 SOCKET Configuration::GetSocketFileDescriptor()

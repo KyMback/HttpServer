@@ -27,10 +27,10 @@ int Server::Start()
 		int address_len = sizeof(clientAddress);
 		clientSocket = accept(listenSocket, &clientAddress, &address_len);
 		//cout << "Client socket descriptor: " << clientSocket << " " << clientAddress.sa_family << " " << address_len <<  endl;
-		cout << "Client socket descriptor: " << clientSocket << endl;
 		if (clientSocket == INVALID_SOCKET) {
 			printf("accept failed");
 		}
+		cout << "Client socket descriptor: " << clientSocket << endl;
 		CreateNewSession(clientSocket);
 	}
 }
@@ -38,12 +38,12 @@ int Server::Start()
 DWORD WINAPI Server::StartNewSession(LPVOID param)
 {
 	Session* session = new Session(new Connection(reinterpret_cast<int>(param)));
-	int result = 0;
+	int result = 0; 
 	try
 	{
 		result = session->StartSession();
 	}
-	catch (Exception ex)
+	catch (Exception& ex)
 	{
 		printf("%s\n", ex.GetEceptionMessage());
 		result = -1;

@@ -20,15 +20,28 @@ namespace HttpServer
 				class HttpParserService
 				{
 				public:
-					static HttpRequest ParseStringToHttpRequest(string rowString);
+					static HttpRequest* ParseStringToHttpRequest(string rawString);
 					static string ParseResponseToString(HttpResponse response);
 				private:
 					static const string ContentTypeKey;
 					static const string ContentLengthKey;
+					static const string HttpRequestPartsDivisionRegEx;
+					static const string HttpRequestTitleRegEx;
+					static const string HttpRequestHeadersSplitingRegEx;
+					static const string HttpRequestHeaderDefaultRegEx;
+
+					static const int HttpRequestTitlePositionNumber;
+					static const int HttpRequestHeadersPositionNumber;
+					static const int HttpRequestBodyPositionNumber;
 
 					static string GetTitle(HttpResponse& response);
 					static string GetHeaders(HttpResponse& response);
 					static string GetBody(HttpResponse& response);
+
+					static vector<string> SeparateHttpRequestParts(string rawString);
+					static void SetRequestTitleData(HttpRequest& request, string titleRawString);
+					static void SetRequestHeaderData(HttpRequest& request, string headerRawString);
+					static void SetRequestBodyData(HttpRequest& request, string bodyRawString);
 				};
 			}
 		}

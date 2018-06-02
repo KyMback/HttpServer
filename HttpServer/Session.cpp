@@ -2,12 +2,15 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <fstream>
 #include "Exception.h"
+#include "HttpParserService.h"
 
 using namespace HttpServer::Infrustructure;
 using namespace Http;
 using namespace Exceptions;
 using namespace std;
+using namespace HttpServices;
 
 Session::Session(Connection* connection)
 {
@@ -18,6 +21,7 @@ int Session::StartSession()
 {
 	while(true)
 	{
+		auto response = new HttpResponse();
 		ConnectionInfo information = _connection->GetData();
 		if(information.Status != ConnectionStatus::Alive)
 		{
@@ -27,58 +31,27 @@ int Session::StartSession()
 			}
 			return 0;			
 		}
-		//TODO: Execute
-		//_connection->SetData(GetResponse(nullptr)->GetStringStream().str());
-		_connection->SetData(GetCustomData(information.Data));
+		HttpRequest* request = HttpParserService::ParseStringToHttpRequest(information.Data);
+		response->SetBody(StartExecute(request));
+		_connection->SetData(HttpParserService::ParseResponseToString(*response));
+		delete response;
+		delete request;
 	}
 }
 
-string Session::GetCustomData(string body)
+string Session::StartExecute(HttpRequest* request)
 {
-	stringstream stream;
-	stringstream response_body;
-	response_body << "<title>Test C++ HTTP Server</title>\n"
-		<< "<h1>Test page</h1>\n"
-		<< "<p>This is body of the test page...</p>\n"
-		<< "<h2>Request headers</h2>\n"
-		<< "<pre>" << body << "</pre>\n"
-		<< "<em><small>Test C++ Http Server</small></em>\n";
-
-	stream << "HTTP/1.1 200 OK\r\n"
-		<< "Version: HTTP/1.1\r\n"
-		<< "Content-Type: text/html; charset=utf-8\r\n"
-		<< "Content-Length: " << response_body.str().length()
-		<< "\r\n\r\n"
-		<< response_body.str();
-	return stream.str();
-}
-
-HttpResponse* Session::GetResponse(string body)
-{
-	HttpResponse* response = new HttpResponse();
-	response->SetBody(body);
-	//stringstream stream;
-	//stringstream response_body;
-	//response_body << "<title>Test C++ HTTP Server</title>\n"
-	//	<< "<h1>Test page</h1>\n"
-	//	<< "<p>This is body of the test page...</p>\n"
-	//	<< "<h2>Request headers</h2>\n"
-	//	<< "<pre>" << buffer << "</pre>\n"
-	//	<< "<em><small>Test C++ Http Server</small></em>\n";
-
-	//// Формируем весь ответ вместе с заголовками
-	//stream << "HTTP/1.1 200 OK\r\n"
-	//	<< "Version: HTTP/1.1\r\n"
-	//	<< "Content-Type: text/html; charset=utf-8\r\n"
-	//	<< "Content-Length: " << response_body.str().length()
-	//	<< "\r\n\r\n"
-	//	<< response_body.str();
-	return response;
-}
-
-HttpRequest* Session::GetRequest(stringstream& stream)
-{
-	return new HttpRequest();
+	ifstream myfile(".." + request->Uri);
+	string body;
+	if(myfile.is_open())
+	{		
+		getline(myfile, body);
+	}else
+	{
+		body = "File not found";
+	}
+	myfile.close();
+	return body;
 }
 
 Session::~Session()

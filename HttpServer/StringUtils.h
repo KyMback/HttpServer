@@ -13,6 +13,8 @@ namespace HttpServer
 		{
 			class StringUtils
 			{
+			private:
+				static string GetFormattedEnumValue(string enumNonFormattedValue);
 			public:
 				static const string DefaultLineSeparatedString;
 				static const int DefaultBufferSizeForFormatting;
@@ -24,12 +26,13 @@ namespace HttpServer
 				static string TimesRepeat(string stringToRepeating, unsigned int times);
 				template<typename T>
 				static string GetLocalizedEnumValue(T enumValue);
+				static vector<string> SplitString(string stringForSpliting, string splitStr);
 			};
 
 			template<typename T>
 			string StringUtils::GetLocalizedEnumValue(T enumValue)
 			{
-				return string(typeid(enumValue).name()) + "." + std::to_string(static_cast<int>(enumValue));
+				return GetFormattedEnumValue(typeid(enumValue).name()) + "." + std::to_string(static_cast<int>(enumValue));
 			}
 		}
 	}

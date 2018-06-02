@@ -105,6 +105,9 @@
     <ClInclude Include="HttpParserService.h">
       <Filter>Header Files\Infrustructure\Http\HttpServices</Filter>
     </ClInclude>
+    <ClInclude Include="HttpContentType.h">
+      <Filter>Header Files\Infrustructure\Enums</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Server.cpp">

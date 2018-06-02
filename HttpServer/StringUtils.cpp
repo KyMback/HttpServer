@@ -6,6 +6,11 @@ using namespace std;
 const string StringUtils::DefaultLineSeparatedString = "\r\n";
 const int StringUtils::DefaultBufferSizeForFormatting = 100;
 
+string StringUtils::GetFormattedEnumValue(string enumNonFormattedValue)
+{
+	return enumNonFormattedValue.substr(enumNonFormattedValue.find_last_of(": ") + 1);
+}
+
 string StringUtils::ConcatStrings(vector<string> strings)
 {
 	string resultString;
@@ -45,4 +50,9 @@ string StringUtils::TimesRepeat(string stringToRepeating, unsigned int times)
 		resultString += stringToRepeating;
 	}
 	return resultString;
+}
+
+vector<string> StringUtils::SplitString(string stringForSpliting, string splitStr)
+{
+	return vector<string>();
 }

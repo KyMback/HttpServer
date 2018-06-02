@@ -10,7 +10,7 @@ namespace HttpServer
 	{
 		namespace Http
 		{
-			class HttpRequest final : protected Http
+			class HttpRequest final : public Http
 			{
 			public:
 				string Uri = string();

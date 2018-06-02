@@ -14,11 +14,7 @@ namespace HttpServer
 		{
 		private:
 			Connection* _connection = nullptr;
-
-			HttpResponse* GetResponse(string body);
-			HttpRequest* GetRequest(stringstream& stream);
-
-			string GetCustomData(string body);
+			string StartExecute(HttpRequest* request);
 		public:
 			HttpContext* UserContext = nullptr;
 			Session(Connection* connection);

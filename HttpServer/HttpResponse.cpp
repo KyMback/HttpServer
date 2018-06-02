@@ -20,8 +20,9 @@ vector<string> HttpResponse::GetHeaders()
 	return this->Headers;
 }
 
-void HttpResponse::SetBody(string rowTitle)
+void HttpResponse::SetBody(string rowBody)
 {
+	this->Body = rowBody;
 }
 
 string HttpResponse::GetBody()

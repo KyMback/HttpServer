@@ -2,10 +2,12 @@
 #include <string>
 #include <vector>
 #include <sstream> 
+#include "HttpContentType.h"
 
 using std::string;
 using std::vector;
 using std::stringstream;
+using namespace HttpServer::Infrustructure::Enums;
 
 namespace HttpServer
 {
@@ -22,7 +24,7 @@ namespace HttpServer
 			public:
 				bool IsKeepAliveConnection = false;
 				int ContentLength = 0;
-				string ContentType = string();
+				HttpContentType ContentType = HttpContentType::TextHtml;
 				double HttpVersion = 1.1;
 
 

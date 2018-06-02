@@ -139,6 +139,7 @@
     <ClInclude Include="ConnectionStatus.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="Http.h" />
+    <ClInclude Include="HttpContentType.h" />
     <ClInclude Include="HttpContext.h" />
     <ClInclude Include="HttpParserService.h" />
     <ClInclude Include="HttpRequest.h" />
