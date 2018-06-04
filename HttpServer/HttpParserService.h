@@ -22,6 +22,7 @@ namespace HttpServer
 				public:
 					static HttpRequest* ParseStringToHttpRequest(string rawString);
 					static string ParseResponseToString(HttpResponse response);
+					static MimeType GetMimeTypeOfContent(string path);
 				private:
 					static const string ContentTypeKey;
 					static const string ContentLengthKey;
@@ -29,6 +30,7 @@ namespace HttpServer
 					static const string HttpRequestTitleRegEx;
 					static const string HttpRequestHeadersSplitingRegEx;
 					static const string HttpRequestHeaderDefaultRegEx;
+					static const string HttpRequestContentExtension;
 
 					static const int HttpRequestTitlePositionNumber;
 					static const int HttpRequestHeadersPositionNumber;
@@ -42,6 +44,8 @@ namespace HttpServer
 					static void SetRequestTitleData(HttpRequest& request, string titleRawString);
 					static void SetRequestHeaderData(HttpRequest& request, string headerRawString);
 					static void SetRequestBodyData(HttpRequest& request, string bodyRawString);
+
+					static string GetContentStringExtension(string path);					
 				};
 			}
 		}

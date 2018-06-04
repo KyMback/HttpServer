@@ -2,7 +2,7 @@
 #include <string>
 #include <vector>
 #include <sstream> 
-#include "HttpContentType.h"
+#include "MimeType.h"
 
 using std::string;
 using std::vector;
@@ -24,7 +24,7 @@ namespace HttpServer
 			public:
 				bool IsKeepAliveConnection = false;
 				int ContentLength = 0;
-				HttpContentType ContentType = HttpContentType::TextHtml;
+				MimeType ContentType = MimeType::TextHtml;
 				double HttpVersion = 1.1;
 
 

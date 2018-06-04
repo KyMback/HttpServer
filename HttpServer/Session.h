@@ -14,7 +14,6 @@ namespace HttpServer
 		{
 		private:
 			Connection* _connection = nullptr;
-			string StartExecute(HttpRequest* request);
 		public:
 			HttpContext* UserContext = nullptr;
 			Session(Connection* connection);

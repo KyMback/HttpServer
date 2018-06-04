@@ -105,8 +105,11 @@
     <ClInclude Include="HttpParserService.h">
       <Filter>Header Files\Infrustructure\Http\HttpServices</Filter>
     </ClInclude>
-    <ClInclude Include="HttpContentType.h">
+    <ClInclude Include="MimeType.h">
       <Filter>Header Files\Infrustructure\Enums</Filter>
+    </ClInclude>
+    <ClInclude Include="HttpProcessingService.h">
+      <Filter>Header Files\Infrustructure\Http\HttpServices</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -156,6 +159,9 @@
       <Filter>Source Files\Infrustructure</Filter>
     </ClCompile>
     <ClCompile Include="HttpParserService.cpp">
+      <Filter>Source Files\Infrustructure\Http\HttpServices</Filter>
+    </ClCompile>
+    <ClCompile Include="HttpProcessingService.cpp">
       <Filter>Source Files\Infrustructure\Http\HttpServices</Filter>
     </ClCompile>
   </ItemGroup>

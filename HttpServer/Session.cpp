@@ -1,10 +1,9 @@
 ﻿#include "Session.h"
-#include <iostream>
-#include <sstream>
 #include <string>
 #include <fstream>
 #include "Exception.h"
 #include "HttpParserService.h"
+#include "HttpProcessingService.h"
 
 using namespace HttpServer::Infrustructure;
 using namespace Http;
@@ -21,7 +20,6 @@ int Session::StartSession()
 {
 	while(true)
 	{
-		auto response = new HttpResponse();
 		ConnectionInfo information = _connection->GetData();
 		if(information.Status != ConnectionStatus::Alive)
 		{
@@ -32,26 +30,11 @@ int Session::StartSession()
 			return 0;			
 		}
 		HttpRequest* request = HttpParserService::ParseStringToHttpRequest(information.Data);
-		response->SetBody(StartExecute(request));
+		HttpResponse* response = HttpProcessingService::StartProcessing(request);
 		_connection->SetData(HttpParserService::ParseResponseToString(*response));
 		delete response;
 		delete request;
 	}
-}
-
-string Session::StartExecute(HttpRequest* request)
-{
-	ifstream myfile(".." + request->Uri);
-	string body;
-	if(myfile.is_open())
-	{		
-		getline(myfile, body);
-	}else
-	{
-		body = "File not found";
-	}
-	myfile.close();
-	return body;
 }
 
 Session::~Session()

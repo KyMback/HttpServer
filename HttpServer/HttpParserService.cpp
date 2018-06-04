@@ -13,6 +13,7 @@ const string HttpParserService::HttpRequestPartsDivisionRegEx = R"(([^\0]+?)(?:\
 const string HttpParserService::HttpRequestTitleRegEx = R"((\w+)(?:[[:space:]])(.+)(?:HTTP\/)(.+))";
 const string HttpParserService::HttpRequestHeadersSplitingRegEx = R"((.+?:.+))";
 const string HttpParserService::HttpRequestHeaderDefaultRegEx = R"((.+?)(?::[[:space:]])(.+))";
+const string HttpParserService::HttpRequestContentExtension = R"(.+[.](\w+))";
 
 const int HttpParserService::HttpRequestTitlePositionNumber = 0;
 const int HttpParserService::HttpRequestHeadersPositionNumber = 1;
@@ -84,6 +85,18 @@ void HttpParserService::SetRequestTitleData(HttpRequest& request, string titleRa
 void HttpParserService::SetRequestBodyData(HttpRequest& request, string bodyRawString)
 {
 	request.SetBody(bodyRawString);
+}
+
+string HttpParserService::GetContentStringExtension(string path)
+{
+	smatch match;
+	regex_search(path, match, regex(HttpRequestContentExtension));
+	return match[1];
+}
+
+MimeType HttpParserService::GetMimeTypeOfContent(string path)
+{
+	return HttpUtils::GetHttpMimeTypeMatchingValues(GetContentStringExtension(path));
 }
 
 void HttpParserService::SetRequestHeaderData(HttpRequest& request, string headerRawString)

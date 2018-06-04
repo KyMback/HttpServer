@@ -22,6 +22,7 @@ vector<string> HttpRequest::GetHeaders()
 
 void HttpRequest::SetBody(string rowTitle)
 {
+	this->Body = rowTitle;
 }
 
 string HttpRequest::GetBody()

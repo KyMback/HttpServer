@@ -1,8 +1,8 @@
-#include "HttpUtils.h"
+﻿#include "HttpUtils.h"
 #include "StringUtils.h"
 #include "HttpRequestType.h"
 #include <map>
-#include "HttpContentType.h"
+#include "MimeType.h"
 
 using namespace HttpServer::Infrustructure::Http;
 using namespace HttpServer::Infrustructure::Utils;
@@ -14,6 +14,7 @@ const string HttpUtils::HttpHeaderTemplate = "%s : %s";
 
 const map<string, string> HttpUtils::HttpLocalizedValues = {
 	{ "HttpStatusCode.200", "OK" },
+	{ "HttpStatusCode.404", "Not Found" },
 	{ "ContentType", "Content-Type" },
 	{ "ContentLength", "content-length" }
 };
@@ -31,8 +32,28 @@ const map<string, HttpRequestType> HttpUtils::HttpRequestTypeValues = {
 	{ "PATCH", HttpRequestType::Patch}
 };
 
-const map<HttpContentType, string> HttpUtils::HttpContentTypeValues = {
-	{ HttpContentType::TextHtml, "text/html" }
+const map<MimeType, string> HttpUtils::HttpContentTypeValues = {
+	{ MimeType::TextPlain, "text/plain; charset=utf-8" },
+	{ MimeType::TextHtml, "text/html; charset=utf-8" },
+	{ MimeType::TextСss, "text/css; charset=utf-8" },
+	{ MimeType::TextJavascript, "text/javascript; charset=utf-8" },
+
+	{ MimeType::ImageBmp, "image/bmp;" },
+	{ MimeType::ImageGif, "image/gif;" },
+	{ MimeType::ImageJpeg, "image/jpeg;" },
+	{ MimeType::ImagePng, "image/png;" },
+	{ MimeType::ImageWebp, "image/webp;" }
+};
+
+const map<string, MimeType> HttpUtils::HttpContentTypeMatchingValues = {
+	{"html", MimeType::TextHtml},
+	{"js", MimeType::TextJavascript},
+	{"css", MimeType::TextСss },
+
+	{"bmp", MimeType::ImageBmp },
+	{"gif", MimeType::ImageGif },
+	{"jpeg", MimeType::ImageJpeg },
+	{"png", MimeType::ImagePng }
 };
 
 string HttpUtils::GetNewLineSeparatedHeaders(vector<string>& headers)
@@ -79,7 +100,12 @@ HttpRequestType HttpUtils::GetHttpRequestTypeValue(string key)
 	return HttpRequestTypeValues.at(key);
 }
 
-string HttpUtils::GetHttpContentTypeValue(HttpContentType key)
+string HttpUtils::GetHttpContentTypeValue(MimeType key)
 {
 	return HttpContentTypeValues.at(key);
+}
+
+MimeType HttpUtils::GetHttpMimeTypeMatchingValues(string key)
+{
+	return HttpContentTypeMatchingValues.count(key) == 1 ? HttpContentTypeMatchingValues.at(key) : MimeType::TextPlain;
 }
