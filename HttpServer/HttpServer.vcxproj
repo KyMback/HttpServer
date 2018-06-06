@@ -119,8 +119,6 @@
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="ConnectionInfo.cpp" />
     <ClCompile Include="Exception.cpp" />
-    <ClCompile Include="Http.cpp" />
-    <ClCompile Include="HttpContext.cpp" />
     <ClCompile Include="HttpParserService.cpp" />
     <ClCompile Include="HttpProcessingService.cpp" />
     <ClCompile Include="HttpRequest.cpp" />
@@ -142,7 +140,6 @@
     <ClInclude Include="Http.h" />
     <ClInclude Include="HttpProcessingService.h" />
     <ClInclude Include="MimeType.h" />
-    <ClInclude Include="HttpContext.h" />
     <ClInclude Include="HttpParserService.h" />
     <ClInclude Include="HttpRequest.h" />
     <ClInclude Include="HttpRequestType.h" />

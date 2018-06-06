@@ -10,8 +10,3 @@ const char * Exception::GetEceptionMessage() const
 {
 	return this->what();
 }
-
-Exception::Exception() : exception()
-{
-
-}

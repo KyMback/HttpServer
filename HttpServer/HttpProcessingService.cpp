@@ -1,5 +1,6 @@
 #include "HttpProcessingService.h"
 #include <fstream>
+#include <sstream>
 #include "HttpParserService.h"
 
 using namespace std;

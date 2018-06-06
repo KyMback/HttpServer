@@ -19,14 +19,9 @@ namespace HttpServer
 				static const string DefaultLineSeparatedString;
 				static const int DefaultBufferSizeForFormatting;
 
-				static string ConcatStrings(vector<string> strings);
 				static string GetSeparatedString(vector<string> strings, string separatedValue);
-				static string GetCommaSeparatedString(vector<string> strings);
-				static string GetDefaultSeparatedString(vector<string> strings);
-				static string TimesRepeat(string stringToRepeating, unsigned int times);
 				template<typename T>
 				static string GetLocalizedEnumValue(T enumValue);
-				static vector<string> SplitString(string stringForSpliting, string splitStr);
 			};
 
 			template<typename T>

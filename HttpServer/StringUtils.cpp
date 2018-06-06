@@ -11,16 +11,6 @@ string StringUtils::GetFormattedEnumValue(string enumNonFormattedValue)
 	return enumNonFormattedValue.substr(enumNonFormattedValue.find_last_of(": ") + 1);
 }
 
-string StringUtils::ConcatStrings(vector<string> strings)
-{
-	string resultString;
-	for (auto str : strings)
-	{
-		resultString += str;
-	}
-	return resultString;
-}
-
 string StringUtils::GetSeparatedString(vector<string> strings, string separatedValue)
 {
 	string resultString;
@@ -30,29 +20,4 @@ string StringUtils::GetSeparatedString(vector<string> strings, string separatedV
 		resultString += separatedValue;
 	}
 	return resultString + strings[strings.size() - 1];
-}
-
-string StringUtils::GetCommaSeparatedString(vector<string> strings)
-{
-	return GetSeparatedString(strings, ",");
-}
-
-string StringUtils::GetDefaultSeparatedString(vector<string> strings)
-{
-	return GetSeparatedString(strings, DefaultLineSeparatedString);
-}
-
-string StringUtils::TimesRepeat(string stringToRepeating, unsigned int times)
-{
-	string resultString = string();
-	for (unsigned i = 0; i < times; i++)
-	{
-		resultString += stringToRepeating;
-	}
-	return resultString;
-}
-
-vector<string> StringUtils::SplitString(string stringForSpliting, string splitStr)
-{
-	return vector<string>();
 }

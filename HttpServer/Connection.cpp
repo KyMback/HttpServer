@@ -1,5 +1,6 @@
 ﻿#include "Connection.h"
 #include "Exception.h"
+#include <sstream>
 
 using namespace HttpServer::Infrustructure;
 using HttpServer::Infrustructure::Connection;

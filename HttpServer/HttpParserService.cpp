@@ -2,6 +2,7 @@
 #include "StringUtils.h"
 #include "HttpUtils.h"
 #include <regex>
+#include <sstream>
 
 using HttpServices::HttpParserService;
 using namespace HttpServer::Infrustructure::Utils;

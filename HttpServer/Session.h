@@ -1,5 +1,4 @@
 #pragma once
-#include "HttpContext.h"
 #include "HttpResponse.h"
 #include "Connection.h"
 
@@ -15,7 +14,6 @@ namespace HttpServer
 		private:
 			Connection* _connection = nullptr;
 		public:
-			HttpContext* UserContext = nullptr;
 			Session(Connection* connection);
 			int StartSession();
 			~Session();
