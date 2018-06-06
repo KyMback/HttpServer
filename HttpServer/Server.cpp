@@ -24,7 +24,8 @@ int Server::Start()
 		auto clientSocket = INVALID_SOCKET;
 		clientSocket = accept(ServerConfigurations->GetSocketFileDescriptor(), nullptr, nullptr);
 		if (clientSocket == INVALID_SOCKET) {
-			printf("accept failed");
+			cout << "accept failed" << endl;
+			continue;
 		}
 		cout << "Client socket descriptor: " << clientSocket << endl;
 		CreateNewSession(clientSocket);
