@@ -1,0 +1,11 @@
+.span4 img {
+    margin-right: 10px;
+}
+.span4 .img-left {
+    float: left;
+    width: 40%;
+}
+.span4 .img-right {
+    float: right;
+    width: 40%;
+}

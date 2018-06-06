@@ -1,0 +1,36 @@
+footer{
+    color: #ffffff;
+    background-color:rgba(44, 62, 80,1.0);
+    height:300px;
+    position:absolute;
+    width:100%;
+    font-weight:lighter;
+}
+footer h3{
+    font-weight:lighter;
+}
+footer ul{
+    padding-left:5px;
+    list-style:none;
+}
+footer p{
+    text-align : justify;
+    font-size : 12px;
+}
+footer iframe {
+    width:100%;
+    position:relative;
+    height:170px;
+}
+.sm{
+    list-style:none;
+    overflow:auto;
+}
+.sm li {
+    display: inline;
+    padding:5px;
+    float:left;
+} 
+.sm li a img {
+    width:32px;
+}
