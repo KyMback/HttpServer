@@ -6,7 +6,7 @@
 using namespace std;
 using namespace HttpServices;
 
-const string HttpProcessingService::DefaultRootDirectory = "..";
+const string HttpProcessingService::DefaultRootDirectoryPath = "..";
 
 HttpResponse* HttpProcessingService::StartProcessing(HttpRequest * request)
 {
@@ -26,7 +26,7 @@ HttpResponse* HttpProcessingService::StartProcessing(HttpRequest * request)
 HttpResponse* HttpProcessingService::StartProcessingInternal(HttpRequest * request)
 {
 	auto response = new HttpResponse();
-	string path = DefaultRootDirectory + request->Uri;
+	string path = DefaultRootDirectoryPath + request->Uri;
 	if (!IsRequestedStaticContent(path))
 	{
 		//TODO: search execution code

@@ -21,7 +21,7 @@ namespace HttpServer
 					static HttpResponse* StartProcessing(HttpRequest* request);
 				private:
 					static HttpResponse* StartProcessingInternal(HttpRequest * request);
-					static const string DefaultRootDirectory;
+					static const string DefaultRootDirectoryPath;
 					static bool IsRequestedStaticContent(string path);
 				};
 			}

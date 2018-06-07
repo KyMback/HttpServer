@@ -26,7 +26,7 @@ namespace HttpServer
 				MimeType ContentType = MimeType::TextHtml;
 				double HttpVersion = 1.1;
 
-				void virtual SetBody(string rowTitle) = 0;
+				void virtual SetBody(string rowBody) = 0;
 				string virtual GetBody() = 0;
 			};
 		}
